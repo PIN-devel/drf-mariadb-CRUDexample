@@ -82,9 +82,9 @@ WSGI_APPLICATION = 'drfForMariadb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE' : 'django.db.backends.mysql',
-        'NAME' : 'db_for_drf',
-        'USER' : '####',
-        'PASSWORD' : '####'
+        'NAME' : '####', # database name
+        'USER' : '####', # root
+        'PASSWORD' : '####' # root password
         #'HOST' : '####' default localhost
         #'POST' : '####' defautl 3306
     }
