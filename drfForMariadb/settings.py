@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import os
+import os, json
+secrets = json.loads(open('secrets.json','r').read())
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'h5*+d01+str84@4vn7v37mex5mn!r#pzz4+(3r!rf_wt*wsm6n'
+SECRET_KEY = secrets['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,9 +83,9 @@ WSGI_APPLICATION = 'drfForMariadb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE' : 'django.db.backends.mysql',
-        'NAME' : '####', # database name
-        'USER' : '####', # root
-        'PASSWORD' : '####' # root password
+        'NAME' : 'my_db', # database name
+        'USER' : 'root',
+        'PASSWORD' : secrets['DATABASE_PASSWORD'] # root password
         #'HOST' : '####' default localhost
         #'POST' : '####' defautl 3306
     }
